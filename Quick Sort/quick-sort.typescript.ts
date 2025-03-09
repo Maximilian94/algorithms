@@ -10,11 +10,13 @@ function QuickSort(list: Array<number>) {
 
     let greaterThanList: Array<number> = []
     let lessThanList: Array<number> = []
+    let equalToList: Array<number> = []
 
     for (let i = 0; i < lastItemIndex; i++) {
         const item = list[i];
-        if (item >= pivot) greaterThanList.push(item)
+        if (item > pivot) greaterThanList.push(item)
         if (item < pivot) lessThanList.push(item)
+        if(item == pivot) equalToList.push(item)
 
     }
 
@@ -26,7 +28,7 @@ function QuickSort(list: Array<number>) {
         lessThanList = QuickSort(lessThanList)
     }
 
-    return [...lessThanList, pivot, ...greaterThanList]
+    return [...lessThanList, ...equalToList, pivot, ...greaterThanList]
 }
 
 console.log('not sorted', randomArray)
